@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Count from "./components/count/Count";
 import Button from "./components/button/Button";
+import Input from "./components/inputtext/Input";
 
 class App extends React.Component {
     constructor(props) {
@@ -9,7 +10,8 @@ class App extends React.Component {
         console.log('constructor');
         this.state = {
             count: 0,
-            data: null
+            data: null,
+            value: "",
         }
         // this.hadler = this.hadler.bind(this); использовать стрелочную функцию
     };
@@ -35,19 +37,14 @@ class App extends React.Component {
         console.log(prevState);
     }
 
-    hadler = () => {
-        this.setState({count: this.state.count + 1})
-    };
-    minusOne = () => {
-        this.setState({count: this.state.count - 1})
-    };
-    plus100 = () => {
-        this.setState({count: this.state.count + 100})
-    };
-    minus100 = () => {
-        this.setState({count: this.state.count - 100})
+    countFunc = (i) => {
+        let numb = this.state.count + i;
+        numb >= 0 && this.setState({count: numb});
     };
 
+    enterInput = (event) => {
+        this.setState({value: event.target.value})
+    };
 
     render() {
         console.log('render');
@@ -55,12 +52,20 @@ class App extends React.Component {
 
         return (
             <div className="App">
-                <Count count={count}/>
+                <div>
+                    <Count count={count}/>
+                </div>
+                <div>
+                    <Button myFunc={this.countFunc.bind(null,1)} nameButton={'+1'}/>
+                    <Button myFunc={this.countFunc.bind(null,-1)} nameButton={'-1'}/>
+                    <Button myFunc={this.countFunc.bind(null,100)} nameButton={'+100'}/>
+                    <Button myFunc={this.countFunc.bind(null,-100)} nameButton={'-100'}/>
 
-                <Button myFunc={this.hadler} nameButton={'+1'}/>
-                <Button myFunc={this.minusOne} nameButton={'-1'}/>
-                <Button myFunc={this.plus100} nameButton={'+100'}/>
-                <Button myFunc={this.minus100} nameButton={'-100'}/>
+                </div>
+                <div>
+                    <Input  value={this.value} enter={this.enterInput}/>
+                </div>
+
             </div>
         )
     }

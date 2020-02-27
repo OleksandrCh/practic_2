@@ -8,7 +8,6 @@ function Button(props){
     };
         return (
             <div>
-
                 <button onClick={myClick}>{props.nameButton}</button>
             </div>
         );
