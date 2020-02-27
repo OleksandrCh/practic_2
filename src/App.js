@@ -7,38 +7,19 @@ import Input from "./components/inputtext/Input";
 class App extends React.Component {
     constructor(props) {
         super(props);
-        console.log('constructor');
         this.state = {
             count: 0,
             data: null,
-            value: "",
-        }
-        // this.hadler = this.hadler.bind(this); использовать стрелочную функцию
+            value: null,
+        };
     };
 
-    // state = {   можно и тут писать state, а не в конструкторе класса
-    //     count: 1,
-    //     data: null
-    // };
 
-    componentDidMount() {
-        console.log('componentDidMount');
-    }
 
-    componentWillUnmount() {
 
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('prevProps');
-        console.log(prevProps);
-
-        console.log('prevState');
-        console.log(prevState);
-    }
 
     countFunc = (i) => {
-        let numb = this.state.count + i;
+        let numb = this.state.count + parseInt(i);
         numb >= 0 && this.setState({count: numb});
     };
 
@@ -47,8 +28,7 @@ class App extends React.Component {
     };
 
     render() {
-        console.log('render');
-        let {count, data} = this.state;
+        let {count, value} = this.state;
 
         return (
             <div className="App">
@@ -63,7 +43,8 @@ class App extends React.Component {
 
                 </div>
                 <div>
-                    <Input  value={this.value} enter={this.enterInput}/>
+                    <Input  value={this.state.value} enter={this.enterInput}/>
+                    <Button myFunc={this.countFunc.bind(null, value)} nameButton={'+'}/>
                 </div>
 
             </div>

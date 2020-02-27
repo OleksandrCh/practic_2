@@ -1,6 +1,8 @@
 .App {
- display: flex;
-  justify-content: space-around;
-  border: 2px solid #000000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid #000000;
+ background-color: grey;
 }
 

@@ -2,6 +2,7 @@
     width: 100px;
     height: 50px;
     background-color: red;
+    display: inline;
 }
 h1{
     margin: 0 auto;

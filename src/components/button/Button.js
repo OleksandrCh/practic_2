@@ -7,7 +7,7 @@ function Button(props){
         console.log('click');
     };
         return (
-            <div>
+            <div className='inLine'>
                 <button onClick={myClick}>{props.nameButton}</button>
             </div>
         );
